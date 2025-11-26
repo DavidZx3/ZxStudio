@@ -1,0 +1,67 @@
+﻿<UserControl x:Class="ZxStudio.Views.InicioView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="800">
+    <UserControl.Resources>
+        <!-- Re-defining brushes and styles locally for stand-alone view, 
+             though in a real app they would be globally merged. -->
+        <SolidColorBrush x:Key="PrimaryGreyBrush" Color="#2D2D2D"/>
+        <SolidColorBrush x:Key="AccentGreyBrush" Color="#5A5A5A"/>
+        <Style x:Key="ModernButtonStyle" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="Background" Value="{StaticResource PrimaryGreyBrush}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Margin" Value="0,0,10,0"/>
+            <!-- Template simplified for brevity, relying on MainWindow for full definition -->
+        </Style>
+        <Style x:Key="CardBorder" TargetType="Border">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="BorderBrush" Value="#DDDDDD"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+    </UserControl.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="40">
+            <TextBlock Text="Bienvenido a ZxStudio" FontSize="26" FontWeight="Bold" Foreground="{StaticResource PrimaryGreyBrush}"/>
+            <TextBlock Text="Gestión integral de proyectos." FontSize="14" Foreground="{StaticResource AccentGreyBrush}" Margin="0,5,0,25"/>
+
+            <Separator Background="#CCCCCC" Margin="0,0,0,25"/>
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,25">
+                <Button Content="NUEVO PROYECTO" Style="{StaticResource ModernButtonStyle}" Width="160"/>
+                <Button Content="ABRIR EXISTENTE" Style="{StaticResource ModernButtonStyle}" Width="160"/>
+            </StackPanel>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Border Style="{StaticResource CardBorder}">
+                    <StackPanel Margin="20">
+                        <TextBlock Text="ESTADISTICAS" FontSize="14" FontWeight="Bold" Foreground="#888"/>
+                        <TextBlock Text="5" FontSize="36" FontWeight="Bold" Foreground="{StaticResource PrimaryGreyBrush}"/>
+                        <TextBlock Text="Proyectos Activos" FontSize="12" Foreground="#666"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="1" Style="{StaticResource CardBorder}">
+                    <StackPanel Margin="20">
+                        <TextBlock Text="PROXIMAS TAREAS" FontSize="14" FontWeight="Bold" Foreground="#888"/>
+                        <TextBlock Text="Revisión Código" FontSize="20" FontWeight="SemiBold" Foreground="{StaticResource PrimaryGreyBrush}" Margin="0,10,0,0"/>
+                        <TextBlock Text="Entrega: Mañana" FontSize="12" Foreground="#D9534F" Margin="0,5,0,0"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
