@@ -2,6 +2,7 @@
     x:Class="ZxStudio.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:views="clr-namespace:ZxStudio.Views"
     Title="ZxStudio"
     Width="1100"
@@ -11,67 +12,137 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="220" />
+            <ColumnDefinition Width="280" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
+        <!--  BARRA LATERAL  -->
         <Border Grid.Column="0" Background="{StaticResource PrimaryGreyBrush}">
-            <StackPanel>
+            <Grid VerticalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
-                <Image
-                    Width="180"
-                    Height="70"
-                    Margin="20,30,10,30"
-                    HorizontalAlignment="Left"
-                    Source="/Resources/zxstudio.png"
-                    Stretch="Uniform" />
+                <!--  Logo  -->
+                <Border
+                    Grid.Row="0"
+                    Padding="40,30,30,30"
+                    HorizontalAlignment="Left">
+                    <Image
+                        Width="180"
+                        Height="110"
+                        Source="/Resources/zxstudio.png"
+                        Stretch="Uniform" />
+                </Border>
+
+                <!--  Menú Principal  -->
                 <ListBox
                     x:Name="MenuLateral"
+                    Grid.Row="1"
+                    Margin="10,20,10,0"
                     Background="Transparent"
                     BorderThickness="0"
                     SelectedIndex="0"
                     SelectionChanged="MenuLateral_SelectionChanged">
-
-                    <ListBoxItem Content="Inicio" Style="{StaticResource MenuItemStyle}" />
-                    <ListBoxItem
-                        Content="Gestión de Personal"
-                        Selected="ListBoxItem_Selected"
-                        Style="{StaticResource MenuItemStyle}" />
-                    <ListBoxItem Content="Gestión de Estudiantes" Style="{StaticResource MenuItemStyle}" />
-                    <ListBoxItem Content="Configuración" Style="{StaticResource MenuItemStyle}" />
+                    <ListBoxItem Style="{StaticResource MenuItemStyle}">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Margin="0,0,12,0"
+                                VerticalAlignment="Center"
+                                Foreground="White"
+                                Kind="Home" />
+                            <TextBlock VerticalAlignment="Center" Text="Inicio" />
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Style="{StaticResource MenuItemStyle}">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Margin="0,0,12,0"
+                                VerticalAlignment="Center"
+                                Foreground="White"
+                                Kind="AccountMultiple" />
+                            <TextBlock VerticalAlignment="Center" Text="Gestión de Personal" />
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Style="{StaticResource MenuItemStyle}">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Margin="0,0,12,0"
+                                VerticalAlignment="Center"
+                                Foreground="White"
+                                Kind="School" />
+                            <TextBlock VerticalAlignment="Center" Text="Gestión de Estudiantes" />
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Style="{StaticResource MenuItemStyle}">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Margin="0,0,12,0"
+                                VerticalAlignment="Center"
+                                Foreground="White"
+                                Kind="ChartBar" />
+                            <TextBlock VerticalAlignment="Center" Text="Reportes" />
+                        </StackPanel>
+                    </ListBoxItem>
                 </ListBox>
-            </StackPanel>
+
+                <!--  Configuración y Cerrar Sesión al Final  -->
+                <StackPanel Grid.Row="2" Background="Transparent">
+                    <Separator Margin="10,10,10,10" Background="{StaticResource PrimaryAccentBrush}" />
+                    <ListBox
+                        Background="Transparent"
+                        BorderThickness="0"
+                        SelectionChanged="MenuLateral_SelectionChanged">
+                        <ListBoxItem Style="{StaticResource MenuItemStyle}">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon
+                                    Margin="0,0,12,0"
+                                    VerticalAlignment="Center"
+                                    Foreground="White"
+                                    Kind="Cog" />
+                                <TextBlock VerticalAlignment="Center" Text="Configuración" />
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem Style="{StaticResource MenuItemStyle}">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon
+                                    Margin="0,0,12,0"
+                                    VerticalAlignment="Center"
+                                    Foreground="White"
+                                    Kind="Logout" />
+                                <TextBlock VerticalAlignment="Center" Text="Cerrar Sesión" />
+                            </StackPanel>
+                        </ListBoxItem>
+                    </ListBox>
+                </StackPanel>
+            </Grid>
         </Border>
 
+        <!--  CONTENIDO PRINCIPAL  -->
         <TabControl
             x:Name="ContenidoPrincipal"
             Grid.Column="1"
-            Margin="0"
             Background="{StaticResource LightGreyBrush}"
             BorderThickness="0">
-
             <TabControl.Resources>
                 <Style TargetType="TabItem">
                     <Setter Property="Visibility" Value="Collapsed" />
                 </Style>
             </TabControl.Resources>
-
             <TabItem>
                 <views:InicioView />
             </TabItem>
-
             <TabItem>
-                <views:BusquedaView />
+                <views:GestionEstudiantesView />
             </TabItem>
-
             <TabItem>
-                <views:ImagenesView />
+                <views:GestionEstudiantesView />
             </TabItem>
-
             <TabItem>
                 <views:ConfiguracionView />
             </TabItem>
-
         </TabControl>
     </Grid>
 </Window>

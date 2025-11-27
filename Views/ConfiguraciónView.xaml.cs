@@ -2,9 +2,10 @@
 
 namespace ZxStudio.Views
 {
-    public partial class ImagenesView : UserControl
+  
+    public partial class ConfiguracionView : UserControl
     {
-        public ImagenesView()
+        public ConfiguracionView()
         {
             InitializeComponent();
         }

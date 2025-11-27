@@ -2,9 +2,9 @@
 
 namespace ZxStudio.Views
 {
-    public partial class BusquedaView : UserControl
+    public partial class GestionEstudiantesView : UserControl
     {
-        public BusquedaView()
+        public GestionEstudiantesView()
         {
             InitializeComponent();
         }
