@@ -79,10 +79,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Resources\StyleDictionary.xaml">
+    <Resource Include="Resources\StyleDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
+    </Resource>
     <Page Include="Views\Busqueda View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -128,6 +128,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\zxstudio.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\feyalegria.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
