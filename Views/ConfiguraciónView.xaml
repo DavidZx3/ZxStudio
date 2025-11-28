@@ -40,7 +40,9 @@
             Width="180"
             Margin="5,20,0,0"
             HorizontalAlignment="Left"
-            Content="GUARDAR CAMBIOS"
+            Content="Guardar cambios"
+            FontSize="20"
+            
             Style="{StaticResource ModernButtonStyle}" />
     </StackPanel>
 </UserControl>

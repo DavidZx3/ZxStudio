@@ -31,7 +31,7 @@
                     Padding="40,30,30,30"
                     HorizontalAlignment="Left">
                     <Image
-                        Width="180"
+                        Width="190"
                         Height="110"
                         Source="/Resources/zxstudio.png"
                         Stretch="Uniform" />
@@ -135,7 +135,7 @@
                 <views:InicioView />
             </TabItem>
             <TabItem>
-                <views:GestionEstudiantesView />
+                <views:GestionPersonalView />
             </TabItem>
             <TabItem>
                 <views:GestionEstudiantesView />

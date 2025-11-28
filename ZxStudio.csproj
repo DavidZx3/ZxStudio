@@ -66,6 +66,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Estudiantes.cs" />
     <Compile Include="Views\GestiónPersonalView.xaml.cs">
       <DependentUpon>GestiónPersonalView.xaml</DependentUpon>
     </Compile>
