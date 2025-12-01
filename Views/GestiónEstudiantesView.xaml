@@ -20,9 +20,9 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <!--  =============================  -->
+        
         <!--  ENCABEZADO  -->
-        <!--  =============================  -->
+       
         <Grid Grid.Row="0" Margin="0,0,0,25">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -45,9 +45,8 @@
 
         </Grid>
 
-        <!--  =============================  -->
         <!--  BOTONES  -->
-        <!--  =============================  -->
+       
         <StackPanel
             Grid.Row="1"
             Margin="0,0,0,20"
@@ -119,12 +118,27 @@
                     <TextBlock VerticalAlignment="Center" Text="AGREGAR" />
                 </StackPanel>
             </Button>
-
+            <Button
+                Width="100"
+                Height="30"
+                Margin="10,0,10,0"
+                Background="{StaticResource AccentGreyBrush}"
+                Click="GuardarDatos_Click"
+                Style="{StaticResource BotonRedondeado}">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon
+                        Width="16"
+                        Height="16"
+                        Margin="0,0,4,0"
+                        Kind="ContentSave" />
+                    <TextBlock VerticalAlignment="Center" Text="GUARDAR" />
+                </StackPanel>
+            </Button>
         </StackPanel>
 
-        <!--  =============================  -->
+      
         <!--  TABLA  -->
-        <!--  =============================  -->
+   
         <Border
             Grid.Row="2"
             Margin="0,0,0,76"
