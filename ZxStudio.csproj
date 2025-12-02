@@ -191,6 +191,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\Perfil.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Resources\feyalegria.png" />
   </ItemGroup>
   <ItemGroup>

@@ -33,7 +33,7 @@
                     <Image
                         Width="190"
                         Height="110"
-                        Source="/Resources/zxstudio.png"
+                        Source="/Resources/feyalegria.png"
                         Stretch="Uniform" />
                 </Border>
 

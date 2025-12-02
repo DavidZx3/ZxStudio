@@ -6,272 +6,213 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
-    d:DesignHeight="600"
-    d:DesignWidth="800"
     Background="{StaticResource LightGreyBrush}"
     mc:Ignorable="d">
 
-    <!--  CONTENEDOR PRINCIPAL AHORA ES GRID  -->
-    <Grid Margin="30,25,30,54">
-
+    <Grid Margin="30,25,30,30">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        
-        <!--  ENCABEZADO  -->
-       
-        <Grid Grid.Row="0" Margin="0,0,0,25">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-
-            <StackPanel Grid.Column="0" Orientation="Vertical">
+        <!-- ENCABEZADO MEJORADO -->
+        <Border
+            Grid.Row="0"
+            Margin="0,0,0,20"
+            Padding="25,15"
+            Background="White"
+            CornerRadius="8">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock
                     FontSize="28"
                     FontWeight="Bold"
-                    Foreground="{StaticResource SecondaryGreyBrush}"
+                    Foreground="{StaticResource PrimaryAccentBrush}"
                     Text="Gestión de Estudiantes" />
 
                 <TextBlock
-                    Margin="0,5,0,0"
-                    FontSize="13"
-                    Foreground="{StaticResource PrimaryAccentBrush}"
-                    Text="{Binding TotalEstudiantes, StringFormat='Total de estudiantes: {0}'}" />
+                    Margin="0,6,0,0"
+                    FontSize="14"
+                    Foreground="{StaticResource AccentGreyBrush}"
+                    Text="{Binding TotalEstudiantes, StringFormat='Total de estudiantes registrados: {0}'}" />
             </StackPanel>
+        </Border>
 
-        </Grid>
-
-        <!--  BOTONES  -->
-       
-        <StackPanel
-            Grid.Row="1"
-            Margin="0,0,0,20"
-            Orientation="Horizontal">
-
-            <Button
-                Width="100"
-                Height="30"
-                Margin="0,0,10,0"
-                Background="#37424A"
-                Click="VisualizarEstudiante_Click"
-                Style="{StaticResource BotonRedondeado}">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon
-                        Width="16"
-                        Height="16"
-                        Margin="0,0,4,0"
-                        Kind="Eye" />
-                    <TextBlock VerticalAlignment="Center" Text="VER" />
-                </StackPanel>
-            </Button>
-
-            <Button
-                Width="100"
-                Height="30"
-                Margin="0,0,10,0"
-                Background="{StaticResource AccentGreyBrush}"
-                Click="EditarEstudiante_Click"
-                Style="{StaticResource BotonRedondeado}">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon
-                        Width="16"
-                        Height="16"
-                        Margin="0,0,4,0"
-                        Kind="Pencil" />
-                    <TextBlock VerticalAlignment="Center" Text="EDITAR" />
-                </StackPanel>
-            </Button>
-
-            <Button
-                Width="100"
-                Height="30"
-                Background="{StaticResource PrimaryGreyBrush}"
-                Click="EliminarEstudiante_Click"
-                Style="{StaticResource BotonRedondeado}">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon
-                        Width="16"
-                        Height="16"
-                        Margin="0,0,4,0"
-                        Kind="TrashCanOutline" />
-                    <TextBlock VerticalAlignment="Center" Text="ELIMINAR" />
-                </StackPanel>
-            </Button>
-
-            <Button
-                Width="150"
-                Height="30"
-                Margin="10,0,0,0"
-                Background="{StaticResource PrimaryGreyBrush}"
-                Click="AgregarEstudiante_Click"
-                Style="{StaticResource BotonRedondeado}">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon
-                        Width="16"
-                        Height="16"
-                        Margin="0,0,4,0"
-                        Kind="Plus" />
-                    <TextBlock VerticalAlignment="Center" Text="AGREGAR" />
-                </StackPanel>
-            </Button>
-            <Button
-                Width="100"
-                Height="30"
-                Margin="10,0,10,0"
-                Background="{StaticResource AccentGreyBrush}"
-                Click="GuardarDatos_Click"
-                Style="{StaticResource BotonRedondeado}">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon
-                        Width="16"
-                        Height="16"
-                        Margin="0,0,4,0"
-                        Kind="ContentSave" />
-                    <TextBlock VerticalAlignment="Center" Text="GUARDAR" />
-                </StackPanel>
-            </Button>
-        </StackPanel>
-
-      
-        <!--  TABLA  -->
-   
+        <!-- TABLA MEJORADA -->
         <Border
-            Grid.Row="2"
-            Margin="0,0,0,76"
+            Grid.Row="1"
             Background="White"
-            BorderBrush="{StaticResource PrimaryGreyBrush}"
+            BorderBrush="#E0E0E0"
             BorderThickness="1"
-            CornerRadius="6">
+            CornerRadius="8">
 
-            <!--  Scroll SOLO para tabla  -->
-            <ScrollViewer
-                Margin="0,0,0,-1"
-                CanContentScroll="False"
-                HorizontalScrollBarVisibility="Auto"
-                VerticalScrollBarVisibility="Auto">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
 
-                <Grid MinWidth="900">
+                <!-- Encabezado de la tabla -->
+                <Border
+                    Grid.Row="0"
+                    Padding="20,12"
+                    Background="{StaticResource LightGreyBrush}"
+                    BorderBrush="#E0E0E0"
+                    BorderThickness="0,0,0,1"
+                    CornerRadius="8,8,0,0">
+                    <TextBlock
+                        FontSize="15"
+                        FontWeight="SemiBold"
+                        Foreground="{StaticResource PrimaryAccentBrush}"
+                        Text="Lista de Estudiantes" />
+                </Border>
+
+                <!-- DataGrid -->
+                <ScrollViewer
+                    Grid.Row="1"
+                    CanContentScroll="False"
+                    HorizontalScrollBarVisibility="Auto"
+                    VerticalScrollBarVisibility="Auto">
 
                     <DataGrid
                         x:Name="EstudiantesDataGrid"
                         MinHeight="300"
-                        Margin="0,0,0,37"
+                        Padding="10"
                         AutoGenerateColumns="False"
                         Background="White"
                         BorderThickness="0"
                         CanUserAddRows="False"
-                        FrozenColumnCount="0"
                         GridLinesVisibility="Horizontal"
                         HeadersVisibility="Column"
                         ItemsSource="{Binding ListaEstudiantes}"
+                        RowHeight="60"
                         ScrollViewer.CanContentScroll="False"
                         ScrollViewer.VerticalScrollBarVisibility="Disabled"
                         SelectionMode="Single"
                         SelectionUnit="FullRow">
 
                         <DataGrid.Resources>
-
+                            <!-- Estilo para encabezados -->
                             <Style TargetType="DataGridColumnHeader">
-                                <Setter Property="Background" Value="{StaticResource PrimaryGreyBrush}" />
+                                <Setter Property="Background" Value="{StaticResource PrimaryAccentBrush}" />
                                 <Setter Property="Foreground" Value="White" />
-                                <Setter Property="Padding" Value="15,12,15,12" />
-                                <Setter Property="FontSize" Value="12" />
-                                <Setter Property="FontWeight" Value="SemiBold" />
+                                <Setter Property="Padding" Value="15,14" />
+                                <Setter Property="FontSize" Value="13" />
+                                <Setter Property="FontWeight" Value="Bold" />
                                 <Setter Property="HorizontalContentAlignment" Value="Left" />
+                                <Setter Property="BorderThickness" Value="0,0,1,0" />
+                                <Setter Property="BorderBrush" Value="#4A5560" />
                             </Style>
 
-                            <Style TargetType="DataGridCell">
-                                <Setter Property="Padding" Value="0" />
-                                <Setter Property="BorderThickness" Value="0" />
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="DataGridCell">
-                                            <Border Background="{TemplateBinding Background}">
-                                                <ContentPresenter />
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
+                            <!-- Estilo para filas -->
+                            <Style TargetType="DataGridRow">
+                                <Setter Property="Background" Value="White" />
                                 <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="{StaticResource LightGreyBrush}" />
+                                    </Trigger>
                                     <Trigger Property="IsSelected" Value="True">
-                                        <Setter Property="Background" Value="#F5F5F5" />
+                                        <Setter Property="Background" Value="{StaticResource LightGreyBrush}" />
                                         <Setter Property="Foreground" Value="Black" />
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>
 
+                            <!-- Estilo para celdas -->
+                            <Style TargetType="DataGridCell">
+                                <Setter Property="BorderThickness" Value="0" />
+                                <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+
+                                <Style.Triggers>
+                                    <!-- Al seleccionar la fila, forzamos el color de fondo de la celda, anulando el HighlightBrush (azul). -->
+                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}, Path=IsSelected}" Value="True">
+                                        <Setter Property="Background" Value="{StaticResource LightGreyBrush}" />
+                                        <Setter Property="BorderBrush" Value="{StaticResource LightGreyBrush}" />
+                                        <Setter Property="Foreground" Value="Black" />
+                                    </DataTrigger>
+                                    <!-- Al pasar el ratón, forzamos el color de fondo de la celda. -->
+                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}, Path=IsMouseOver}" Value="True">
+                                        <Setter Property="Background" Value="{StaticResource LightGreyBrush}" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
                         </DataGrid.Resources>
 
-                        <!--  COLUMNAS  -->
+                        <!-- COLUMNAS -->
                         <DataGrid.Columns>
 
-                            <DataGridTemplateColumn Width="80" Header="ID">
+                            <!-- Avatar con iniciales (ID) -->
+                            <DataGridTemplateColumn Width="100" Header="ID">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Border
-                                            Width="40"
-                                            Height="40"
-                                            Margin="15,8,0,8"
+                                        <Ellipse
+                                            Width="45"
+                                            Height="45"
+                                            Margin="15,0,0,0"
                                             HorizontalAlignment="Left"
-                                            Background="{StaticResource PrimaryAccentBrush}"
-                                            CornerRadius="20">
-                                            <TextBlock
-                                                HorizontalAlignment="Center"
-                                                VerticalAlignment="Center"
-                                                FontSize="14"
-                                                FontWeight="Bold"
-                                                Foreground="White"
-                                                Text="{Binding Iniciales}" />
-                                        </Border>
+                                            VerticalAlignment="Center"
+                                            Stroke="Black"
+                                            StrokeThickness="1">
+                                            <Ellipse.Fill>
+                                                <ImageBrush ImageSource="/Resources/perfil.png" Stretch="UniformToFill" />
+                                            </Ellipse.Fill>
+                                        </Ellipse>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
 
-                            <DataGridTemplateColumn Width="180" Header="Foto">
+                            <!-- Nombre Completo -->
+                            <DataGridTemplateColumn Width="220" Header="NOMBRE COMPLETO">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock
-                                            Margin="10,0,0,0"
+                                            Margin="15,0,0,0"
+                                            VerticalAlignment="Center"
+                                            FontSize="14"
+                                            FontWeight="Medium"
+                                            Foreground="{StaticResource PrimaryGreyBrush}"
+                                            Text="{Binding NombreCompleto}"
+                                            TextTrimming="CharacterEllipsis" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <!-- Matrícula / Cedula -->
+                            <DataGridTemplateColumn Width="150" Header="CEDULA">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock
+                                            Margin="15,0,0,0"
+                                            VerticalAlignment="Center"
                                             FontSize="13"
                                             Foreground="{StaticResource SecondaryGreyBrush}"
-                                            Text="{Binding NombreCompleto}" />
+                                            Text="{Binding Cedula}" />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
 
-                            <DataGridTemplateColumn Width="150" Header="Nombre">
+                            <!-- Correo -->
+                            <DataGridTemplateColumn Width="280" Header="CORREO ELECTRÓNICO">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock
-                                            Margin="10,0,0,0"
+                                            Margin="15,0,0,0"
+                                            VerticalAlignment="Center"
                                             FontSize="13"
                                             Foreground="{StaticResource SecondaryGreyBrush}"
-                                            Text="{Binding Matricula}" />
+                                            Text="{Binding Correo}"
+                                            TextTrimming="CharacterEllipsis" />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
 
-                            <DataGridTemplateColumn Width="250" Header="Correo">
+                            <!-- Teléfono -->
+                            <DataGridTemplateColumn Width="150" Header="TELÉFONO">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock
-                                            Margin="10,0,0,0"
-                                            FontSize="13"
-                                            Foreground="{StaticResource SecondaryGreyBrush}"
-                                            Text="{Binding Correo}" />
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-
-                            <DataGridTemplateColumn Width="150" Header="Teléfono">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock
-                                            Margin="10,0,0,0"
+                                            Margin="15,0,0,0"
+                                            VerticalAlignment="Center"
                                             FontSize="13"
                                             Foreground="{StaticResource SecondaryGreyBrush}"
                                             Text="{Binding Telefono}" />
@@ -279,14 +220,23 @@
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
 
-                            <DataGridTemplateColumn Width="100" Header="Sección">
+                            <!-- Sección -->
+                            <DataGridTemplateColumn Width="120" Header="SECCIÓN">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock
-                                            Margin="10,0,0,0"
-                                            FontSize="13"
-                                            Foreground="{StaticResource SecondaryGreyBrush}"
-                                            Text="{Binding Seccion}" />
+                                        <Border
+                                            Margin="15,0,0,0"
+                                            Padding="10,6"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            Background="{StaticResource LightGreyBrush}"
+                                            CornerRadius="4">
+                                            <TextBlock
+                                                FontSize="12"
+                                                FontWeight="SemiBold"
+                                                Foreground="{StaticResource PrimaryAccentBrush}"
+                                                Text="{Binding Seccion}" />
+                                        </Border>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
@@ -294,10 +244,147 @@
                         </DataGrid.Columns>
                     </DataGrid>
 
-                </Grid>
+                </ScrollViewer>
+            </Grid>
 
-            </ScrollViewer>
+        </Border>
 
+        <!-- BARRA DE ACCIONES DEBAJO DE LA TABLA -->
+        <Border
+            Grid.Row="2"
+            Margin="0,20,0,0"
+            Padding="20,18"
+            Background="White"
+            CornerRadius="8">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Acciones principales (Izquierda) -->
+                <StackPanel Grid.Column="0" Orientation="Horizontal">
+
+                    <Button
+                        Width="120"
+                        Height="40"
+                        Margin="0,0,5,0"
+                        Background="{StaticResource PrimaryAccentBrush}"
+                        Click="VisualizarEstudiante_Click"
+                        Style="{StaticResource BotonRedondeado}">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Width="18"
+                                Height="18"
+                                Margin="0,0,6,0"
+                                VerticalAlignment="Center"
+                                Kind="Eye" />
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontSize="13"
+                                FontWeight="Bold"
+                                Text="VER" />
+                        </StackPanel>
+                    </Button>
+
+                    <Button
+                        Width="120"
+                        Height="40"
+                        Margin="0,0,5,0"
+                        Background="{StaticResource SecondaryGreyBrush}"
+                        Click="EditarEstudiante_Click"
+                        Style="{StaticResource BotonRedondeado}">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Width="18"
+                                Height="18"
+                                Margin="0,0,6,0"
+                                VerticalAlignment="Center"
+                                Kind="Pencil" />
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontSize="13"
+                                FontWeight="Bold"
+                                Text="EDITAR" />
+                        </StackPanel>
+                    </Button>
+
+                    <Button
+                        Width="120"
+                        Height="40"
+                        Margin="0,0,5,0"
+                        Background="{StaticResource AccentGreyBrush}"
+                        Click="EliminarEstudiante_Click"
+                        Style="{StaticResource BotonRedondeado}">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Width="18"
+                                Height="18"
+                                Margin="0,0,6,0"
+                                VerticalAlignment="Center"
+                                Kind="TrashCanOutline" />
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontSize="13"
+                                FontWeight="Bold"
+                                Text="ELIMINAR" />
+                        </StackPanel>
+                    </Button>
+
+                </StackPanel>
+
+                <!-- Botones a la derecha -->
+                <StackPanel
+                    Grid.Column="2"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+
+                    <Button
+                        Width="140"
+                        Height="40"
+                        Margin="0,0,30,0"
+                        Background="{StaticResource PrimaryAccentBrush}"
+                        Click="AgregarEstudiante_Click"
+                        Style="{StaticResource BotonRedondeado}">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Width="20"
+                                Height="20"
+                                Margin="0,0,6,0"
+                                VerticalAlignment="Center"
+                                Kind="Plus" />
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontSize="13"
+                                FontWeight="Bold"
+                                Text="AGREGAR" />
+                        </StackPanel>
+                    </Button>
+
+                    <Button
+                        Width="140"
+                        Height="40"
+                        Background="DarkGreen"
+                        Click="GuardarDatos_Click"
+                        Style="{StaticResource BotonRedondeado}">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Width="18"
+                                Height="18"
+                                Margin="0,0,6,0"
+                                VerticalAlignment="Center"
+                                Kind="ContentSave" />
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontSize="13"
+                                FontWeight="Bold"
+                                Text="GUARDAR" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+
+            </Grid>
         </Border>
 
     </Grid>

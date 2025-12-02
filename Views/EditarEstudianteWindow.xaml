@@ -5,89 +5,219 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Editar Estudiante" Height="500" Width="450"
+        Title="Editar Estudiante" Height="600" Width="500"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         WindowStyle="None"
         Background="Transparent"
         AllowsTransparency="True">
 
-    <Border Style="{StaticResource CardBorder}" Margin="10" Background="White">
-
-        <Grid Margin="20">
+    <Border Style="{StaticResource CardBorder}" Margin="10" Background="LightGray">
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <StackPanel Grid.Row="0" Margin="0,0,0,20">
-                <TextBlock Text="Editar Estudiante" 
-                           FontSize="24" 
-                           FontWeight="Bold" 
-                           Foreground="{StaticResource SecondaryGreyBrush}"/>
-                <TextBlock Text="Modifique los datos a continuación" 
-                           FontSize="14" 
-                           Foreground="Gray"/>
-            </StackPanel>
+            <!-- Encabezado con color de acento -->
+            <Border Grid.Row="0" 
+                    Background="{StaticResource PrimaryAccentBrush}" 
+                    CornerRadius="8,8,0,0"
+                    Padding="25,20">
+                <StackPanel>
+                    <TextBlock Text="Editar Estudiante" 
+                               FontSize="26" 
+                               FontWeight="Bold" 
+                               Foreground="White"/>
+                    <TextBlock Text="Modifique los datos necesarios" 
+                               FontSize="13" 
+                               Foreground="#E0E0E0"
+                               Margin="0,5,0,0"/>
+                </StackPanel>
+            </Border>
 
-            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
-                <StackPanel VerticalAlignment="Top">
+            <!-- Contenido principal -->
+            <ScrollViewer Grid.Row="1" 
+                          VerticalScrollBarVisibility="Auto"
+                          Margin="25,20">
+                <StackPanel>
 
-                    <TextBlock Text="Nombre Completo" Foreground="{StaticResource SecondaryGreyBrush}" FontWeight="SemiBold" Margin="0,0,0,5"/>
-                    <TextBox Text="{Binding NombreCompleto, UpdateSourceTrigger=PropertyChanged}"
-                             Style="{StaticResource ModernTextBox}"
-                             Margin="0,0,0,15"/>
+                    <!-- Nombre Completo -->
+                    <Border Background="White" 
+                            CornerRadius="6" 
+                            Padding="15,12"
+                            Margin="0,0,0,12">
+                        <StackPanel>
+                            <TextBlock Text="NOMBRE COMPLETO *" 
+                                       Foreground="{StaticResource AccentGreyBrush}" 
+                                       FontWeight="SemiBold" 
+                                       FontSize="11"
+                                       Margin="0,0,0,6"/>
+                            <TextBox x:Name="TxtNombreCompleto"
+                                     Text="{Binding NombreCompleto, UpdateSourceTrigger=PropertyChanged}"
+                                     Style="{StaticResource ModernTextBox}"
+                                     BorderThickness="0"
+                                     Background="Transparent"
+                                     FontSize="15"
+                                     Padding="0"
+                                     Height="30"
+                                     PreviewTextInput="TxtNombreCompleto_PreviewTextInput"/>
+                        </StackPanel>
+                    </Border>
 
-                    <TextBlock Text="Matrícula" Foreground="{StaticResource SecondaryGreyBrush}" FontWeight="SemiBold" Margin="0,0,0,5"/>
-                    <TextBox Text="{Binding Matricula, UpdateSourceTrigger=PropertyChanged}"
-                             Style="{StaticResource ModernTextBox}"
-                             Margin="0,0,0,15"/>
+                    <!-- Cedula -->
+                    <Border Background="White" 
+                            CornerRadius="6" 
+                            Padding="15,12"
+                            Margin="0,0,0,12">
+                        <StackPanel>
+                            <TextBlock Text="CEDULA *" 
+                                       Foreground="{StaticResource AccentGreyBrush}" 
+                                       FontWeight="SemiBold" 
+                                       FontSize="11"
+                                       Margin="0,0,0,6"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
 
-                    <TextBlock Text="Correo Electrónico" Foreground="{StaticResource SecondaryGreyBrush}" FontWeight="SemiBold" Margin="0,0,0,5"/>
-                    <TextBox Text="{Binding Correo, UpdateSourceTrigger=PropertyChanged}"
-                             Style="{StaticResource ModernTextBox}"
-                             Margin="0,0,0,15"/>
+                                <!-- Prefijo V- fijo -->
+                                <TextBlock Grid.Column="0"
+                                           Text="V-"
+                                           FontSize="15"
+                                           FontWeight="SemiBold"
+                                           Foreground="#424242"
+                                           VerticalAlignment="Center"
+                                           Margin="0,0,5,0"/>
 
-                    <TextBlock Text="Teléfono" Foreground="{StaticResource SecondaryGreyBrush}" FontWeight="SemiBold" Margin="0,0,0,5"/>
-                    <TextBox Text="{Binding Telefono, UpdateSourceTrigger=PropertyChanged}"
-                             Style="{StaticResource ModernTextBox}"
-                             Margin="0,0,0,15"/>
+                                <!-- Campo para los números -->
+                                <TextBox x:Name="TxtCedulaNumeros"
+                                         Grid.Column="1"
+                                         Text="{Binding CedulaNumeros, UpdateSourceTrigger=PropertyChanged}"
+                                         Style="{StaticResource ModernTextBox}"
+                                         BorderThickness="0"
+                                         Background="Transparent"
+                                         FontSize="15"
+                                         Padding="0"
+                                         Height="30"
+                                         MaxLength="8"
+                                         PreviewTextInput="TxtCedulaNumeros_PreviewTextInput"/>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
 
-                    <TextBlock Text="Sección" Foreground="{StaticResource SecondaryGreyBrush}" FontWeight="SemiBold" Margin="0,0,0,5"/>
-                    <TextBox Text="{Binding Seccion, UpdateSourceTrigger=PropertyChanged}"
-                             Style="{StaticResource ModernTextBox}"
-                             Margin="0,0,0,15"/>
+                    <!-- Correo Electrónico -->
+                    <Border Background="White" 
+                            CornerRadius="6" 
+                            Padding="15,12"
+                            Margin="0,0,0,12">
+                        <StackPanel>
+                            <TextBlock Text="CORREO ELECTRÓNICO *" 
+                                       Foreground="{StaticResource AccentGreyBrush}" 
+                                       FontWeight="SemiBold" 
+                                       FontSize="11"
+                                       Margin="0,0,0,6"/>
+                            <TextBox Text="{Binding Correo, UpdateSourceTrigger=PropertyChanged}"
+                                     Style="{StaticResource ModernTextBox}"
+                                     BorderThickness="0"
+                                     Background="Transparent"
+                                     FontSize="15"
+                                     Padding="0"
+                                     Height="30"/>
+                        </StackPanel>
+                    </Border>
 
-                    <TextBlock Text="Ejemplo de campo extra" Foreground="{StaticResource SecondaryGreyBrush}" FontWeight="SemiBold" Margin="0,0,0,5"/>
-                    <TextBox Text="Dato Adicional"
-                             Style="{StaticResource ModernTextBox}"
-                             Margin="0,0,0,15"/>
+                    <!-- Teléfono -->
+                    <Border Background="White" 
+                            CornerRadius="6" 
+                            Padding="15,12"
+                            Margin="0,0,0,12">
+                        <StackPanel>
+                            <TextBlock Text="TELÉFONO *" 
+                                       Foreground="{StaticResource AccentGreyBrush}" 
+                                       FontWeight="SemiBold" 
+                                       FontSize="11"
+                                       Margin="0,0,0,6"/>
+                            <TextBox Text="{Binding Telefono, UpdateSourceTrigger=PropertyChanged}"
+                                     Style="{StaticResource ModernTextBox}"
+                                     BorderThickness="0"
+                                     Background="Transparent"
+                                     FontSize="15"
+                                     Padding="0"
+                                     Height="30"/>
+                        </StackPanel>
+                    </Border>
 
-                    <TextBlock Text="Otro campo extra" Foreground="{StaticResource SecondaryGreyBrush}" FontWeight="SemiBold" Margin="0,0,0,5"/>
-                    <TextBox Text="Más datos"
-                             Style="{StaticResource ModernTextBox}"
-                             Margin="0,0,0,15"/>
+                    <!-- Sección -->
+                    <Border Background="White" 
+                            CornerRadius="6" 
+                            Padding="15,12">
+                        <StackPanel>
+                            <TextBlock Text="SECCIÓN *" 
+                                       Foreground="{StaticResource AccentGreyBrush}" 
+                                       FontWeight="SemiBold" 
+                                       FontSize="11"
+                                       Margin="0,0,0,6"/>
+                            <ComboBox x:Name="CmbSeccion"
+                                      Height="35"
+                                      Background="Transparent"
+                                      BorderThickness="0"
+                                      FontSize="15">
+                                <ComboBoxItem Content="6TO A"/>
+                                <ComboBoxItem Content="6TO B"/>
+                                <ComboBoxItem Content="5TO A"/>
+                                <ComboBoxItem Content="5TO B"/>
+                                <ComboBoxItem Content="4TO A"/>
+                                <ComboBoxItem Content="4TO B"/>
+                                <ComboBoxItem Content="3RO A"/>
+                                <ComboBoxItem Content="3RO B"/>
+                                <ComboBoxItem Content="2DO A"/>
+                                <ComboBoxItem Content="2DO B"/>
+                                <ComboBoxItem Content="1RO A"/>
+                                <ComboBoxItem Content="1RO B"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </Border>
 
                 </StackPanel>
             </ScrollViewer>
 
-            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+            <!-- Pie con botones -->
+            <Border Grid.Row="2" 
+                    Background="DarkGray"
+                    BorderThickness="0,1,0,0"
+                    BorderBrush="#E0E0E0"
+                    Padding="25,15"
+                    CornerRadius="0,0,8,8">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
 
-                <Button Click="Cancelar_Click"
-                        Width="100" Height="35" Margin="0,0,10,0"
-                        Style="{StaticResource BotonRedondeado}"
-                        Background="{StaticResource AccentGreyBrush}">
-                    <TextBlock Text="CANCELAR" FontWeight="Bold"/>
-                </Button>
+                    <Button x:Name="BtnCancelar"
+                            Click="Cancelar_Click"
+                            Width="120" 
+                            Height="40"
+                            Margin="0,0,10,0"
+                            Style="{StaticResource BotonRedondeado}"
+                            Background="{StaticResource AccentGreyBrush}">
+                        <TextBlock Text="CANCELAR" 
+                                   FontWeight="Bold"
+                                   FontSize="13"/>
+                    </Button>
 
-                <Button Click="Guardar_Click"
-                        Width="100" Height="35"
-                        Style="{StaticResource BotonRedondeado}"
-                        Background="{StaticResource PrimaryAccentBrush}">
-                    <TextBlock Text="GUARDAR" FontWeight="Bold"/>
-                </Button>
-            </StackPanel>
+                    <Button x:Name="BtnGuardar"
+                            Click="Guardar_Click"
+                            Width="120" 
+                            Height="40"
+                            Style="{StaticResource BotonRedondeado}"
+                            Background="{StaticResource PrimaryAccentBrush}">
+                        <TextBlock Text="GUARDAR" 
+                                   FontWeight="Bold"
+                                   FontSize="13"/>
+                    </Button>
+                </StackPanel>
+            </Border>
+
         </Grid>
     </Border>
 </Window>

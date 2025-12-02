@@ -26,8 +26,7 @@ namespace ZxStudio.Views
             // 2. Si no hay datos guardados, usar los datos de ejemplo (SOLO PARA INICIO)
             if (ListaEstudiantes.Count == 0)
             {
-                ListaEstudiantes.Add(new Estudiante { Iniciales = "JD", NombreCompleto = "Juan Diaz", Matricula = "2023-001", Correo = "juan@mail.com", Telefono = "809-555-0101", Seccion = "A1" });
-                ListaEstudiantes.Add(new Estudiante { Iniciales = "MP", NombreCompleto = "Maria Perez", Matricula = "2023-002", Correo = "maria@mail.com", Telefono = "809-555-0202", Seccion = "B2" });
+               
             }
 
             this.DataContext = this;
@@ -61,7 +60,7 @@ namespace ZxStudio.Views
                         {
                             Iniciales = valores[0],
                             NombreCompleto = valores[1],
-                            Matricula = valores[2],
+                            Cedula = valores[2],
                             Correo = valores[3],
                             Telefono = valores[4],
                             Seccion = valores[5]
@@ -84,12 +83,12 @@ namespace ZxStudio.Views
                 var lineasCSV = new List<string>();
 
                 // 1. Agregar el encabezado
-                lineasCSV.Add("Iniciales,NombreCompleto,Matricula,Correo,Telefono,Seccion");
+                lineasCSV.Add("Iniciales,NombreCompleto,Cedula,Correo,Telefono,Seccion");
 
                 // 2. Convertir cada estudiante a una línea de CSV
                 foreach (var estudiante in ListaEstudiantes)
                 {
-                    string linea = $"{estudiante.Iniciales},{estudiante.NombreCompleto},{estudiante.Matricula},{estudiante.Correo},{estudiante.Telefono},{estudiante.Seccion}";
+                    string linea = $"{estudiante.Iniciales},{estudiante.NombreCompleto},{estudiante.Cedula},{estudiante.Correo},{estudiante.Telefono},{estudiante.Seccion}";
                     lineasCSV.Add(linea);
                 }
 
