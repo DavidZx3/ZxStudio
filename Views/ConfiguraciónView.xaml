@@ -6,6 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="600"
     d:DesignWidth="800"
+    Background="{StaticResource LightGreyBrush}"
     mc:Ignorable="d">
 
     <StackPanel Margin="40">
@@ -42,7 +43,6 @@
             HorizontalAlignment="Left"
             Content="Guardar cambios"
             FontSize="20"
-            
             Style="{StaticResource ModernButtonStyle}" />
     </StackPanel>
 </UserControl>

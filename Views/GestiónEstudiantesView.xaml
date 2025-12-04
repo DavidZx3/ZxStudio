@@ -16,7 +16,7 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <!-- ENCABEZADO MEJORADO -->
+        <!--  ENCABEZADO MEJORADO  -->
         <Border
             Grid.Row="0"
             Margin="0,0,0,20"
@@ -38,7 +38,7 @@
             </StackPanel>
         </Border>
 
-        <!-- TABLA MEJORADA -->
+        <!--  TABLA MEJORADA  -->
         <Border
             Grid.Row="1"
             Background="White"
@@ -52,7 +52,7 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <!-- Encabezado de la tabla -->
+                <!--  Encabezado de la tabla  -->
                 <Border
                     Grid.Row="0"
                     Padding="20,12"
@@ -67,7 +67,7 @@
                         Text="Lista de Estudiantes" />
                 </Border>
 
-                <!-- DataGrid -->
+                <!--  DataGrid  -->
                 <ScrollViewer
                     Grid.Row="1"
                     CanContentScroll="False"
@@ -76,6 +76,7 @@
 
                     <DataGrid
                         x:Name="EstudiantesDataGrid"
+                        Width="1029"
                         MinHeight="300"
                         Padding="10"
                         AutoGenerateColumns="False"
@@ -92,7 +93,7 @@
                         SelectionUnit="FullRow">
 
                         <DataGrid.Resources>
-                            <!-- Estilo para encabezados -->
+                            <!--  Estilo para encabezados  -->
                             <Style TargetType="DataGridColumnHeader">
                                 <Setter Property="Background" Value="{StaticResource PrimaryAccentBrush}" />
                                 <Setter Property="Foreground" Value="White" />
@@ -104,7 +105,7 @@
                                 <Setter Property="BorderBrush" Value="#4A5560" />
                             </Style>
 
-                            <!-- Estilo para filas -->
+                            <!--  Estilo para filas  -->
                             <Style TargetType="DataGridRow">
                                 <Setter Property="Background" Value="White" />
                                 <Style.Triggers>
@@ -118,19 +119,19 @@
                                 </Style.Triggers>
                             </Style>
 
-                            <!-- Estilo para celdas -->
+                            <!--  Estilo para celdas  -->
                             <Style TargetType="DataGridCell">
                                 <Setter Property="BorderThickness" Value="0" />
                                 <Setter Property="FocusVisualStyle" Value="{x:Null}" />
 
                                 <Style.Triggers>
-                                    <!-- Al seleccionar la fila, forzamos el color de fondo de la celda, anulando el HighlightBrush (azul). -->
+                                    <!--  Al seleccionar la fila, forzamos el color de fondo de la celda, anulando el HighlightBrush (azul).  -->
                                     <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}, Path=IsSelected}" Value="True">
                                         <Setter Property="Background" Value="{StaticResource LightGreyBrush}" />
                                         <Setter Property="BorderBrush" Value="{StaticResource LightGreyBrush}" />
                                         <Setter Property="Foreground" Value="Black" />
                                     </DataTrigger>
-                                    <!-- Al pasar el ratón, forzamos el color de fondo de la celda. -->
+                                    <!--  Al pasar el ratón, forzamos el color de fondo de la celda.  -->
                                     <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}, Path=IsMouseOver}" Value="True">
                                         <Setter Property="Background" Value="{StaticResource LightGreyBrush}" />
                                     </DataTrigger>
@@ -138,10 +139,10 @@
                             </Style>
                         </DataGrid.Resources>
 
-                        <!-- COLUMNAS -->
+                        <!--  COLUMNAS  -->
                         <DataGrid.Columns>
 
-                            <!-- Avatar con iniciales (ID) -->
+                            <!--  Avatar con iniciales (ID)  -->
                             <DataGridTemplateColumn Width="100" Header="ID">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -161,7 +162,7 @@
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
 
-                            <!-- Nombre Completo -->
+                            <!--  Nombre Completo  -->
                             <DataGridTemplateColumn Width="220" Header="NOMBRE COMPLETO">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -177,7 +178,7 @@
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
 
-                            <!-- Matrícula / Cedula -->
+                            <!--  Matrícula / Cedula  -->
                             <DataGridTemplateColumn Width="150" Header="CEDULA">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -191,7 +192,7 @@
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
 
-                            <!-- Correo -->
+                            <!--  Correo  -->
                             <DataGridTemplateColumn Width="280" Header="CORREO ELECTRÓNICO">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -206,7 +207,7 @@
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
 
-                            <!-- Teléfono -->
+                            <!--  Teléfono  -->
                             <DataGridTemplateColumn Width="150" Header="TELÉFONO">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -220,7 +221,7 @@
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
 
-                            <!-- Sección -->
+                            <!--  Sección  -->
                             <DataGridTemplateColumn Width="120" Header="SECCIÓN">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -249,7 +250,7 @@
 
         </Border>
 
-        <!-- BARRA DE ACCIONES DEBAJO DE LA TABLA -->
+        <!--  BARRA DE ACCIONES DEBAJO DE LA TABLA  -->
         <Border
             Grid.Row="2"
             Margin="0,20,0,0"
@@ -263,7 +264,7 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
-                <!-- Acciones principales (Izquierda) -->
+                <!--  Acciones principales (Izquierda)  -->
                 <StackPanel Grid.Column="0" Orientation="Horizontal">
 
                     <Button
@@ -334,7 +335,7 @@
 
                 </StackPanel>
 
-                <!-- Botones a la derecha -->
+                <!--  Botones a la derecha  -->
                 <StackPanel
                     Grid.Column="2"
                     HorizontalAlignment="Right"

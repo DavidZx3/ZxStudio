@@ -41,6 +41,7 @@
                         <TextBlock
                             HorizontalAlignment="Center"
                             FontSize="20"
+                            FontWeight="Bold"
                             Foreground="{StaticResource PrimaryAccentBrush}"
                             Text="Excelencia en gestión y control académico."
                             TextAlignment="Center"
